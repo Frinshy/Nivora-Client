@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "nivoraclient",
+  "version": "${version}",
+  "name": "NivoraClient",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/nivoraclient/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-datagen": [
+      "de.frinshy.nivoraclient.client.NivoraClientDataGenerator"
+    ],
+    "client": [
+      "de.frinshy.nivoraclient.client.NivoraClientClient"
+    ],
+    "main": [
+      "de.frinshy.nivoraclient.NivoraClient"
+    ]
+  },
+  "mixins": [
+    "nivoraclient.mixins.json",
+    {
+      "config": "nivoraclient.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-language-kotlin": ">=${kotlin_loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
