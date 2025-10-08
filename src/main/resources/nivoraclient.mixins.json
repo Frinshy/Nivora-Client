@@ -1,9 +1,10 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "de.frinshy.nivoraclient.mixin",
+  "package": "de.frinshy.nivoraclient.client.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "TitleScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
