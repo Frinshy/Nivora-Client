@@ -5,24 +5,37 @@ import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.gui.widget.ButtonWidget
 import net.minecraft.text.Text
 
-abstract class MagicalScreenBase(title: Text) : Screen(title) {
+abstract class MagicalScreenBase(title: Text = Text.literal("")) : Screen(title) {
 
     protected var animationTime = 0f
     protected var particleTime = 0f
 
     // Draws the shared theme visuals; call at the start of your screen's render().
+    @JvmOverloads
     protected fun renderTheme(
         context: DrawContext,
         delta: Float,
-        titleText: String,
-        subtitle: String,
-        tagline: String
+        titleText: String? = null,
+        subtitle: String? = null,
+        tagline: String? = null
     ) {
         animationTime += delta
         particleTime += delta
 
         MagicalTheme.renderModernBackground(context, width, height, animationTime)
-        MagicalTheme.renderModernTitle(context, textRenderer, width, titleText, subtitle, tagline, animationTime)
+
+        if (titleText != null || subtitle != null || tagline != null) {
+            MagicalTheme.renderModernTitle(
+                context,
+                textRenderer,
+                width,
+                titleText ?: "",
+                subtitle ?: "",
+                tagline ?: "",
+                animationTime
+            )
+        }
+
         MagicalTheme.renderModernParticles(context, width, height, particleTime)
         MagicalTheme.renderVersionInfo(context, textRenderer, width, height)
     }

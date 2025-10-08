@@ -21,7 +21,7 @@ class CreditScreen(private val parent: Screen) : MagicalScreenBase(Text.literal(
     }
 
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
-        renderTheme(context, delta, "NIVORA", "CREDITS", "Thank you for using Nivora")
+        renderTheme(context, delta)
 
         val credits = listOf(
             "",
